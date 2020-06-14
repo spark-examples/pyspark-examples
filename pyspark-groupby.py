@@ -7,9 +7,7 @@ Created on Sun Jun 14 10:20:19 2020
 
 import pyspark
 from pyspark.sql import SparkSession
-from pyspark.sql.types import StructType,StructField, StringType, IntegerType 
-from pyspark.sql.types import ArrayType, DoubleType, BooleanType
-from pyspark.sql.functions import col,array_contains,sum,avg,max
+from pyspark.sql.functions import col,sum,avg,max
 
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
