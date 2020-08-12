@@ -18,7 +18,6 @@ deptDF = spark.createDataFrame(data=dept, schema = deptColumns)
 deptDF.printSchema()
 deptDF.show(truncate=False)
 
-
 dataCollect = deptDF.collect()
 
 print(dataCollect)
