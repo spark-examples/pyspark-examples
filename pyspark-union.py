@@ -5,37 +5,35 @@ author SparkByExamples.com
 
 import pyspark
 from pyspark.sql import SparkSession
-
+from pyspark.sql.functions import expr
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
-simpleData = [("James","Sales","NY",90000,34,10000), \
-    ("Michael","Sales","NY",86000,56,20000), \
-    ("Robert","Sales","CA",81000,30,23000), \
-    ("Maria","Finance","CA",90000,24,23000) \
-  ]
+data = [("Banana",1000,"USA"), ("Carrots",1500,"USA"), ("Beans",1600,"USA"), \
+      ("Orange",2000,"USA"),("Orange",2000,"USA"),("Banana",400,"China"), \
+      ("Carrots",1200,"China"),("Beans",1500,"China"),("Orange",4000,"China"), \
+      ("Banana",2000,"Canada"),("Carrots",2000,"Canada"),("Beans",2000,"Mexico")]
 
-columns= ["employee_name","department","state","salary","age","bonus"]
-df = spark.createDataFrame(data = simpleData, schema = columns)
+columns= ["Product","Amount","Country"]
+df = spark.createDataFrame(data = data, schema = columns)
 df.printSchema()
 df.show(truncate=False)
 
-simpleData2 = [("James","Sales","NY",90000,34,10000), \
-    ("Maria","Finance","CA",90000,24,23000), \
-    ("Jen","Finance","NY",79000,53,15000), \
-    ("Jeff","Marketing","CA",80000,25,18000), \
-    ("Kumar","Marketing","NY",91000,50,21000) \
-  ]
-columns2= ["employee_name","department","state","salary","age","bonus"]
+pivotDF = df.groupBy("Product").pivot("Country").sum("Amount")
+pivotDF.printSchema()
+pivotDF.show(truncate=False)
 
-df2 = spark.createDataFrame(data = simpleData2, schema = columns2)
+pivotDF = df.groupBy("Product","Country") \
+      .sum("Amount") \
+      .groupBy("Product") \
+      .pivot("Country") \
+      .sum("sum(Amount)")
+pivotDF.printSchema()
+pivotDF.show(truncate=False)
 
-df2.printSchema()
-df2.show(truncate=False)
 
-unionDF = df.union(df2)
-unionDF.show(truncate=False)
-disDF = df.union(df2).distinct()
-disDF.show(truncate=False)
-
-unionAllDF = df.unionAll(df2)
-unionAllDF.show(truncate=False)
+""" unpivot """
+""" unpivot """
+unpivotExpr = "stack(3, 'Canada', Canada, 'China', China, 'Mexico', Mexico) as (Country,Total)"
+unPivotDF = pivotDF.select("Product", expr(unpivotExpr)) \
+    .where("Total is not null")
+unPivotDF.show(truncate=False)
