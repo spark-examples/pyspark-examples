@@ -33,5 +33,5 @@ result.show(truncate=False)
 
 # Broadcast variable on filter
 
-filter_df= df.where((df['Foo'].isin(broadcastStates.value)))
+filteDf= df.where((df['state'].isin(broadcastStates.value)))
 
