@@ -6,7 +6,8 @@ Explanation of all PySpark RDD, DataFrame and SQL examples present on this proje
 - [How to create SparkSession](https://sparkbyexamples.com/pyspark/pyspark-what-is-sparksession/)
 - [PySpark Repartition vs Coalesce](https://sparkbyexamples.com/pyspark/pyspark-repartition-vs-coalesce/)
 - [PySpark Broadcast variables](https://sparkbyexamples.com/pyspark/pyspark-broadcast-variables/)
-
+- [PySpark – repartition() vs coalesce()](https://sparkbyexamples.com/pyspark/pyspark-repartition-vs-coalesce/)
+- [PySpark – Parallelize](https://sparkbyexamples.com/pyspark/pyspark-parallelize-create-rdd/)
 
 
 ## Spark DataFrame Examples 
