@@ -2,5 +2,8 @@ Explanation of all PySpark RDD, DataFrame and SQL examples present on this proje
 
 # Table of Contents (Spark Examples in Python)
 
-# PySpark RDD Examples
+# PySpark Basic Examples
 [How to create SparkSession](https://sparkbyexamples.com/pyspark/pyspark-what-is-sparksession/)
+[PySpark Repartition vs Coalesce](https://sparkbyexamples.com/pyspark/pyspark-repartition-vs-coalesce/)
+[PySpark Broadcast variables](https://sparkbyexamples.com/pyspark/pyspark-broadcast-variables/)
+
