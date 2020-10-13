@@ -20,7 +20,7 @@ Explanation of all PySpark RDD, DataFrame and SQL examples present on this proje
 - [PySpark – What is it? & Who uses it?](https://sparkbyexamples.com/pyspark/what-is-pyspark-and-who-uses-it/)
 
 
-## Spark DataFrame Examples 
+## PySpark DataFrame Examples 
 - [PySpark – Create a DataFrame](https://sparkbyexamples.com/pyspark/different-ways-to-create-dataframe-in-pyspark/)
 - [PySpark – Create an empty DataFrame](https://sparkbyexamples.com/pyspark/pyspark-create-an-empty-dataframe/)
 - [PySpark – Convert RDD to DataFrame](https://sparkbyexamples.com/pyspark/convert-pyspark-rdd-to-dataframe/)
@@ -35,4 +35,13 @@ Explanation of all PySpark RDD, DataFrame and SQL examples present on this proje
 - [ PySpark orderBy() and sort() explained](https://sparkbyexamples.com/pyspark/pyspark-orderby-and-sort-explained/)
 - [PySpark Groupby Explained with Example](https://sparkbyexamples.com/pyspark/pyspark-groupby-explained-with-example/)
 - [PySpark Join Types Explained with Examples](https://sparkbyexamples.com/pyspark/pyspark-join/)
+- [PySpark Union and UnionAll Explained](https://sparkbyexamples.com/pyspark/pyspark-union-and-unionall/)
+- [PySpark UDF (User Defined Function)](https://sparkbyexamples.com/pyspark/pyspark-udf-user-defined-function/)
+- [PySpark flatMap() Transformation](https://sparkbyexamples.com/pyspark/pyspark-flatmap-transformation/)
+- [PySpark map Transformation](https://sparkbyexamples.com/pyspark/pyspark-map-transformation/)
+
+
+## PySpark SQL Functions
+- [PySpark Aggregate Functions with Examples](https://sparkbyexamples.com/pyspark/pyspark-aggregate-functions/)
+- [PySpark Window Functions](https://sparkbyexamples.com/pyspark/pyspark-window-functions/)
 
