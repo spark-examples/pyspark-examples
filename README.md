@@ -45,3 +45,8 @@ Explanation of all PySpark RDD, DataFrame and SQL examples present on this proje
 - [PySpark Aggregate Functions with Examples](https://sparkbyexamples.com/pyspark/pyspark-aggregate-functions/)
 - [PySpark Window Functions](https://sparkbyexamples.com/pyspark/pyspark-window-functions/)
 
+
+## PySpark Datasources
+- [PySpark Read CSV file into DataFrame](https://sparkbyexamples.com/pyspark/pyspark-read-csv-file-into-dataframe/)
+- [PySpark read and write Parquet File ](https://sparkbyexamples.com/pyspark/pyspark-read-and-write-parquet-file/)
+
