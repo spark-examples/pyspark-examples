@@ -27,4 +27,6 @@ Explanation of all PySpark RDD, DataFrame and SQL examples present on this proje
 - [PySpark – Convert DataFrame to Pandas](https://sparkbyexamples.com/pyspark/convert-pyspark-dataframe-to-pandas/)
 - [PySpark – StructType & StructField](https://sparkbyexamples.com/pyspark/pyspark-structtype-and-structfield/)
 - [PySpark Row using on DataFrame and RDD](https://sparkbyexamples.com/pyspark/pyspark-row-using-rdd-dataframe/)
-
+- [Select columns from PySpark DataFrame ](https://sparkbyexamples.com/pyspark/select-columns-from-pyspark-dataframe/)
+- [PySpark Collect() – Retrieve data from DataFrame](https://sparkbyexamples.com/pyspark/pyspark-collect/)
+- [PySpark withColumn to update or add a column](https://sparkbyexamples.com/pyspark/pyspark-withcolumn/)
