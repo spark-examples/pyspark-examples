@@ -32,3 +32,4 @@ Explanation of all PySpark RDD, DataFrame and SQL examples present on this proje
 - [PySpark withColumn to update or add a column](https://sparkbyexamples.com/pyspark/pyspark-withcolumn/)
 - [PySpark using where filter function ](https://sparkbyexamples.com/pyspark/pyspark-where-filter/)
 - [PySpark – Distinct to drop duplicate rows ](https://sparkbyexamples.com/pyspark/pyspark-distinct-to-drop-duplicates/)
+- [ PySpark orderBy() and sort() explained](https://sparkbyexamples.com/pyspark/pyspark-orderby-and-sort-explained/)
