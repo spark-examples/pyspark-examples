@@ -33,3 +33,6 @@ Explanation of all PySpark RDD, DataFrame and SQL examples present on this proje
 - [PySpark using where filter function ](https://sparkbyexamples.com/pyspark/pyspark-where-filter/)
 - [PySpark – Distinct to drop duplicate rows ](https://sparkbyexamples.com/pyspark/pyspark-distinct-to-drop-duplicates/)
 - [ PySpark orderBy() and sort() explained](https://sparkbyexamples.com/pyspark/pyspark-orderby-and-sort-explained/)
+- [PySpark Groupby Explained with Example](https://sparkbyexamples.com/pyspark/pyspark-groupby-explained-with-example/)
+- [PySpark Join Types Explained with Examples](https://sparkbyexamples.com/pyspark/pyspark-join/)
+
