@@ -5,7 +5,7 @@ author SparkByExamples.com
 
 import pyspark
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import split, col,substring,regexp_replace
+from pyspark.sql.functions import split, col
 spark=SparkSession.builder.appName("sparkbyexamples").getOrCreate()
 
 data=data = [('James','','Smith','1991-04-01'),
@@ -36,6 +36,7 @@ df2.show(truncate=False)
 split_col = pyspark.sql.functions.split(df['dob'], '-')
 df3 = df.select("firstname","middlename","lastname","dob", split_col.getItem(0).alias('year'),split_col.getItem(1).alias('month'),split_col.getItem(2).alias('day'))   
 df3.show(truncate=False)
+
 """
 df4=spark.createDataFrame([("20-13-2012-monday",)], ['date',])
 

@@ -1,0 +1,14 @@
+[{
+  "RecordNumber": 2,
+  "Zipcode": 704,
+  "ZipCodeType": "STANDARD",
+  "City": "PASEO COSTA DEL SUR",
+  "State": "PR"
+},
+{
+  "RecordNumber": 10,
+  "Zipcode": 709,
+  "ZipCodeType": "STANDARD",
+  "City": "BDA SAN LUIS",
+  "State": "PR"
+}]

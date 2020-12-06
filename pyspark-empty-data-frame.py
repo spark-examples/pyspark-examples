@@ -25,6 +25,8 @@ df1.printSchema()
 df2 = spark.createDataFrame([], schema)
 df2.printSchema()
 
+df3 = spark.emptyDataFrame()
+df3.printSchema()
 
 
 
