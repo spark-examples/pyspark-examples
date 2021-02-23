@@ -19,7 +19,8 @@ print(pandasDF)
 
 #Outputs below data on console
 
-print(pandasDF.count())
+pdCount=pandasDF.count()
+print(pdCount)
 
 print(pandasDF.max())
 print(pandasDF.mean())
