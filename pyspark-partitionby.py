@@ -10,10 +10,9 @@ spark = SparkSession.builder \
           .appName('SparkByExamples.com') \
           .getOrCreate()
 
-#df=spark.read.option("header",True) \
-#        .csv("C:/apps/sparkbyexamples/src/pyspark-examples/resources/simple-zipcodes.csv")
 df=spark.read.option("header",True) \
-        .csv("C:/apps/sparkbyexamples/src/spark-scala-examples-new/src/main/resources/free-zipcode-database.csv")
+        .csv("C:/apps/sparkbyexamples/src/pyspark-examples/resources/simple-zipcodes.csv")
+
           
 df.show()
 print(df.rdd.getNumPartitions())

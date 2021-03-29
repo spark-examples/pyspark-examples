@@ -15,7 +15,7 @@ arrayData = [
         ('Robert',['CSharp',''],{'hair':'red','eye':''}),
         ('Washington',None,None),
         ('Jefferson',['1','2'],{})
-
+        ]
 df = spark.createDataFrame(data=arrayData, schema = ['name','knownLanguages','properties'])
 df.printSchema()
 df.show()
@@ -45,7 +45,7 @@ df.select(df.name,posexplode(df.properties)).show()
 
 from pyspark.sql.functions import posexplode_outer
 """ with array """
-df.select($"name",posexplode_outer($"knownLanguages")).show()
+df.select(df.name,posexplode_outer(df.knownLanguages)).show()
 
 """ with map """
 df.select(df.name,posexplode_outer(df.properties)).show()

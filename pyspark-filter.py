@@ -37,14 +37,30 @@ df = spark.createDataFrame(data = arrayStructureData, schema = arrayStructureSch
 df.printSchema()
 df.show(truncate=False)
 
+#Equals
 df.filter(df.state == "OH") \
     .show(truncate=False)
 
+#Not equals
+df.filter(~(df.state == "OH")) \
+    .show(truncate=False)
+df.filter(df.state != "OH") \
+    .show(truncate=False)    
+    
 df.filter(col("state") == "OH") \
     .show(truncate=False)    
     
 df.filter("gender  == 'M'") \
     .show(truncate=False)    
+
+df.filter("gender  <> 'M'") \
+    .show(truncate=False)    
+
+#IS IN
+li=["OH","CA","DE"]
+df.filter(df.state.isin(li)).show()
+#IS NOT IN
+df.filter(~df.state.isin(li)).show()
 
 df.filter( (df.state  == "OH") & (df.gender  == "M") ) \
     .show(truncate=False)        
@@ -54,4 +70,8 @@ df.filter(array_contains(df.languages,"Java")) \
 
 df.filter(df.name.lastname == "Williams") \
     .show(truncate=False) 
+
+df.filter(df.state.startswith("N")).show()
+df.filter(df.state.endswith("H")).show()
+df.filter(df.state.like("N%")).show()
     
