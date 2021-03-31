@@ -14,19 +14,15 @@ dataDictionary = [
         ('Jefferson',{'hair':'brown','eye':''})
         ]
 
-df = spark.createDataFrame(data=dataDictionary, schema = ['name','properties'])
-df.printSchema()
-df.show(truncate=False)
-
 # Using StructType schema
-from pyspark.sql.types import StructField, StructType, StringType, MapType,IntegerType
+from pyspark.sql.types import StructField, StructType, StringType, MapType
 schema = StructType([
     StructField('name', StringType(), True),
     StructField('properties', MapType(StringType(),StringType()),True)
 ])
-df2 = spark.createDataFrame(data=dataDictionary, schema = schema)
-df2.printSchema()
-df2.show(truncate=False)
+df = spark.createDataFrame(data=dataDictionary, schema = schema)
+df.printSchema()
+df.show(truncate=False)
 
 df3=df.rdd.map(lambda x: \
     (x.name,x.properties["hair"],x.properties["eye"])) \
@@ -44,9 +40,17 @@ df.withColumn("hair",df.properties["hair"]) \
   .drop("properties") \
   .show()
 
-# Functions
-from pyspark.sql.functions import explode,map_keys,col
-keysDF = df.select(explode(map_keys(df.properties))).distinct()
-keysList = keysDF.rdd.map(lambda x:x[0]).collect()
-keyCols = list(map(lambda x: col("properties").getItem(x).alias(str(x)), keysList))
-df.select(df.name, *keyCols).show()
+from pyspark.sql.functions import explode
+df.select(df.name,explode(df.properties)).show()
+
+from pyspark.sql.functions import map_keys
+df.select(df.name,map_keys(df.properties)).show()
+
+from pyspark.sql.functions import map_values
+df.select(df.name,map_values(df.properties)).show()
+
+#from pyspark.sql.functions import explode,map_keys
+#keysDF = df.select(explode(map_keys(df.properties))).distinct()
+#keysList = keysDF.rdd.map(lambda x:x[0]).collect()
+#print(keysList)
+
