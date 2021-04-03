@@ -32,6 +32,13 @@ df.select(df.date,df.increment,
      expr("""add_months(date,increment) as inc_date""")
   ).show()
 
+# Add
+df.select(df.date,df.increment,
+     expr("increment + 5 as new_increment")
+  ).show()
+
+df.select("increment",expr("cast(increment as string) as str_increment")) \
+  .printSchema()
 #Use expr()  to filter the rows
 data=[(100,2),(200,3000),(500,500)] 
 df=spark.createDataFrame(data).toDF("col1","col2") 

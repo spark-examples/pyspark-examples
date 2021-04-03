@@ -56,10 +56,11 @@ rdd2=df.rdd.map(lambda x:
 
 def func1(x):
     firstName=x.firstname
-    lastName=x.lastName
+    lastName=x.lastname
     name=firstName+","+lastName
     gender=x.gender.lower()
     salary=x.salary*2
     return (name,gender,salary)
 
-rdd2=df.rdd.map(lambda x: func1(x))
+rdd2=df.rdd.map(lambda x: func1(x)).toDF().show()
+rdd2=df.rdd.map(func1).toDF().show()
