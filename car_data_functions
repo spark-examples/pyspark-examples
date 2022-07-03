@@ -1,0 +1,57 @@
+import pyspark.ml
+from pyspark.ml.feature import VectorAssembler
+from pyspark.sql.types import IntegerType
+from pyspark.ml.regression import LinearRegression
+from pyspark.ml.feature import Imputer
+
+#Create a app Name
+from pyspark.sql import SparkSession
+spark= SparkSession.builder.master("local[2]")\
+.appName('practice')\
+.getOrCreate()
+spark
+
+print("APP Name :"+spark.sparkContext.appName)
+print("Master :"+spark.sparkContext.master)
+
+# Reading CSV File
+df= spark.read.csv('/content/CAR DETAILS FROM CAR DEKHO.csv')
+df.show()
+
+df_p=spark.read.option('header','true').csv('/content/CAR DETAILS FROM CAR DEKHO.csv')
+# displaying the values
+df_p.show()
+
+#tells information
+df_p.printSchema() 
+
+
+#type casting from string to integer
+from pyspark.sql.types import IntegerType
+df_p = df_p.withColumn("km_driven", df_p["km_driven"].cast(IntegerType()))
+df_p.printSchema()
+
+output = feature_assembler.transform(df_p)
+
+#adding new columns
+dff=output.withColumn('price', output['selling_price']+80000).show()
+
+#drop a columns
+output.drop('seller_type').show()
+
+#fill with missing values
+output.na.fill('NA').show()
+
+
+imputer = Imputer(
+    inputCols=['km_driven','year'],
+    outputCols=['{}_imputed'.format(c) for c in ['km_driven','year']]
+).setStrategy('mean')
+
+imputer.fit(output).transform(output).show()
+
+#select columns with conditions
+output.filter(output['km_driven']<1000).select(['name','year','km_driven','selling_price']).show()
+
+
+
