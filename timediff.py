@@ -25,7 +25,7 @@ df = spark.createDataFrame(list( zip(dates)), schema=schema)
 
 df.withColumn('input_timestamp',to_timestamp(col('input_timestamp')))\
   .withColumn('current_timestamp', current_timestamp().alias('current_timestamp'))\
-  .withColumn('DiffInSeconds',current_timestamp().cast(LongType) - col('input_timestamp').cast(LongType))\
+  .withColumn('DiffInSeconds',current_timestamp().cast(LongType()) - col('input_timestamp').cast(LongType()))\
   .withColumn('DiffInMinutes',round(col('DiffInSeconds')/60))\
   .withColumn('DiffInHours',round(col('DiffInSeconds')/3600))\
   .withColumn('DiffInDays',round(col('DiffInSeconds')/24*3600))\
