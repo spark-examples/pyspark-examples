@@ -1,13 +1,8 @@
-# -*- coding: utf-8 -*-
-"""
-author Ayush Agarwal : https://github.com/ayush-96
-"""
-
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, explode
-from pyspark.sql.types import StructType, StructField, StringType, ArrayType
+from pyspark.sql.types import StructType, StructField, ArrayType, StringType
 
-spark = SparkSession.builder.master("local[1]").appName("Nested JSON Reader").getOrCreate()
+spark = SparkSession.builder.master("local[1]").appName('Json-Dedup').getOrCreate()
 
 # Define the schema for the JSON data
 json_schema = StructType([
@@ -28,9 +23,9 @@ json_schema = StructType([
     ]))
 ])
 
-# Read the JSON file into a DataFrame
-df = spark.read.format("json").option("multiline", "true").schema(json_schema).load("resources/nested_json.json")
-parsed_df = df.select("Serviceability.CurrentPrinterConfiguration.*", "Serviceability.PrinterData.*").select(
+json_df = spark.read.format("json").option("multiline", "true").schema(json_schema)\
+    .load(['resources/nested_json.json', 'resources/nested_json1.json', 'resources/nested_json2.json'])
+parsed_df = json_df.select("Serviceability.CurrentPrinterConfiguration.*", "Serviceability.PrinterData.*").select(
     col('PrinterProductNumber').alias('Product Name'),
     col('PrinterSerialNumber').alias('Serial Number'),
     col('PrinterProductModel').alias('Model Name'),
@@ -38,5 +33,8 @@ parsed_df = df.select("Serviceability.CurrentPrinterConfiguration.*", "Serviceab
     col('MediaDetails').alias('Media'),
     col('SuppliesDetails').alias('Supplies'),
     col('History').alias('history array'))
-parsed_df = parsed_df.withColumn('job history', explode(col('history array'))).drop(col('history array'))
+parsed_df = parsed_df.withColumn('job history', explode(col('history array.val'))).drop(col('history array'))
+dedup_df = parsed_df.dropDuplicates(['job history'])
+print("Duplicate records dropped : {}".format(parsed_df.count()-dedup_df.count()))
 parsed_df.show(truncate=False)
+spark.stop()
