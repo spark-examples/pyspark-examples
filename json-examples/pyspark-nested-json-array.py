@@ -29,7 +29,7 @@ json_schema = StructType([
 ])
 
 # Read the JSON file into a DataFrame
-df = spark.read.format("json").option("multiline", "true").schema(json_schema).load("resources/nested_json.json")
+df = spark.read.format("json").option("multiline", "true").schema(json_schema).load("../resources/nested_json.json")
 parsed_df = df.select("Serviceability.CurrentPrinterConfiguration.*", "Serviceability.PrinterData.*").select(
     col('PrinterProductNumber').alias('Product Name'),
     col('PrinterSerialNumber').alias('Serial Number'),

@@ -59,7 +59,7 @@ df_with_schema.show()
 
 # Create a table from Parquet File
 spark.sql("CREATE OR REPLACE TEMPORARY VIEW zipcode3 USING json OPTIONS" + 
-      " (path 'resources/zipcodes.json')")
+      " (path '../resources/zipcodes.json')")
 spark.sql("select * from zipcode3").show()
 
 # PySpark write Parquet File
