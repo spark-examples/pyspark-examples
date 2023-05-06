@@ -1,5 +1,3 @@
-
-
 from pyspark.sql.session import SparkSession
 from pyspark.sql.functions import *
 from pyspark.sql.window import *
@@ -17,9 +15,11 @@ sc._jsc.hadoopConfiguration().set("fs.s3a.aws.credentials.provider", "com.amazon
 sc._jsc.hadoopConfiguration().set("fs.AbstractFileSystem.s3a.impl", "org.apache.hadoop.fs.s3a.S3A")
 sc._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "s3.us-east-1.amazonaws.com")
 
-sc._jsc.hadoopConfiguration().set('fs.s3a.access.key', '')
-sc._jsc.hadoopConfiguration().set('fs.s3a.secret.key', '')
+sc._jsc.hadoopConfiguration().set('fs.s3a.access.key', 'A')
+sc._jsc.hadoopConfiguration().set('fs.s3a.secret.key', 'VracelDcLui')
 sc._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "s3.amazonaws.com")
 
 df = spark.read.option("inferSchema","true").option("header","true").csv("s3a://ind-north-up-agra-kapil-test-1/datasets/input-ds/movies/")
 df.show()
+
+spark.stop()

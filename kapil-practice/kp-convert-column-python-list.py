@@ -5,7 +5,7 @@ spark = SparkSession.builder.master("local[1]") \
     .appName('SparkByExamples.com') \
     .getOrCreate()
 
-nasa_df = spark.read.json("G:\\datasets\\json-datasets\\nasa-singleline-zipcodes.json")
+nasa_df = spark.read.json("G:\\datasets\\input-datasets\\json-datasets\\nasa-singleline-zipcodes.json")
 nasa_df.printSchema()
 
 nasa_df.show()
