@@ -4,7 +4,7 @@ author SparkByExamples.com
 """
 
 
-from pyspark.sql import SparkSession
+from pyspark.sql import SparkSession, Row
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
 columns = ["name","languagesAtSchool","currentState"]
