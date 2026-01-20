@@ -9,7 +9,7 @@ spark: SparkSession = SparkSession.builder \
     .appName("SparkByExamples.com") \
     .getOrCreate()
 
-filePath="resources/small_zipcode.csv"
+filePath= "../resources/small_zipcode.csv"
 df = spark.read.options(header='true', inferSchema='true') \
           .csv(filePath)
 
