@@ -28,3 +28,4 @@ print(dataCollect2)
 for row in dataCollect:
     print(row['dept_name'] + "," +str(row['dept_id']))
 
+# collect is an action which will give list.
